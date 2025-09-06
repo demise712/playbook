@@ -16,5 +16,3 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '17'
-        distribution: 'temurin' # Or 'zulu', 'adopt', 'microsoft', etc.
-        cache: 'gradle' # Or 'gradle', 'sbt' if applicable for caching dependencies
