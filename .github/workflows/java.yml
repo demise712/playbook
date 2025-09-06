@@ -17,6 +17,4 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin' # Or 'zulu', 'adopt', 'microsoft', etc.
-        cache: 'maven' # Or 'gradle', 'sbt' if applicable for caching dependencies
-    - name: Build with Maven
-      run: mvn clean install
+        cache: 'gradle' # Or 'gradle', 'sbt' if applicable for caching dependencies
