@@ -10,4 +10,4 @@
           - name: Run a shell command
             run: echo "Hello from Ubuntu!"
           - name: Install dependencies
-            run: sudo apt-get update && sudo apt-get install -y some-package
+            run: sudo apt-get update && sudo apt-get install -y java
