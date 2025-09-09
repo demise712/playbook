@@ -1,0 +1,13 @@
+    name: My Ubuntu Workflow
+
+    on: [push]
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest # Specifies an Ubuntu-based runner
+        steps:
+          - uses: actions/checkout@v4
+          - name: Run a shell command
+            run: echo "Hello from Ubuntu!"
+          - name: Install dependencies
+            run: sudo apt-get update && sudo apt-get install -y some-package
