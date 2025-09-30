@@ -15,7 +15,7 @@ jobs:
       - name: Install Onboardbase
         run: sudo dpkg -i onboardbase.deb
       - name: Update Onboardbase CLI
-        run: onboardbase update
+        run: sudo onboardbase update
       - name: Setup Onboardbase
         run: onboardbase config:set --token "${{ secrets.ONBOARDBASE_TOKEN }}"
       - name: Run project
