@@ -10,13 +10,15 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Download Onboardbase
-        run: wget https://onboardbase-cli.fra1.digitaloceanspaces.com/apt/onboardbase.deb
-      - name: Install Onboardbase
-        run: sudo dpkg -i onboardbase.deb
-      - name: Update Onboardbase CLI
-        run: sudo onboardbase update || true
-      - name: Setup Onboardbase
-        run: onboardbase config:set --token "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: Run project
-        run: onboardbase run -c "printenv SECRET_ENV_VARIABLE" --project "github actions test" --environment "development"
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install the code linting and formatting tool Ruff
+        run: pipx install ruff
+      - name: Lint code with Ruff
+        run: ruff check --output-format=github --target-version=py39
+      - name: Check code formatting with Ruff
+        run: ruff format --diff --target-version=py39
+        continue-on-error: true
