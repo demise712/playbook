@@ -14,7 +14,9 @@ jobs:
         run: wget https://onboardbase-cli.fra1.digitaloceanspaces.com/apt/onboardbase.deb
       - name: Install Onboardbase
         run: sudo dpkg -i onboardbase.deb
+      - name: Update Onboardbase CLI
+        run: onboardbase update
       - name: Setup Onboardbase
-        run: onboardbase config:set --token "${{ secrets.SSH_PRIVATE_KEY }}"
+        run: onboardbase config:set --token "${{ secrets.ONBOARDBASE_TOKEN }}"
       - name: Run project
         run: onboardbase run -c "printenv SECRET_ENV_VARIABLE" --project "github actions test" --environment "development"
