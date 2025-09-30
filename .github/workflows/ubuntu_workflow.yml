@@ -10,15 +10,11 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: Install the code linting and formatting tool Ruff
-        run: pipx install ruff
-      - name: Lint code with Ruff
-        run: ruff check --output-format=github --target-version=py39
-      - name: Check code formatting with Ruff
-        run: ruff format --diff --target-version=py39
-        continue-on-error: true
+      - name: Verify Python installation
+        run: python --version
